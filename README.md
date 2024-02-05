@@ -30,7 +30,7 @@ Dit project is gemaakt door Kevin Boere
 
 ## 📜 License
 Copyright © 2023 Kevin Boere<br>
-Dit project heeft een [MIT](https://github.com/Kboere/Tech-Track-23-24/blob/main/LICENSE) license
+Dit project heeft een [MIT](https://github.com/Kboere/web-app-from-scratch-2324/blob/main/LICENSE) license
 
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
