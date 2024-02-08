@@ -18,7 +18,7 @@ function init() {
         .then(data => {
             const outputList = document.getElementById('duckData'); // Get the output list element
             const eend = data.eend; // Access the "eend" object
-            
+
             // Define a mapping object for custom property names
             const propertyMapping = {
                 "naam": "Naam",
@@ -34,7 +34,7 @@ function init() {
             // Create a menu container
             const menuContainer = document.createElement('ul');
             menuContainer.classList.add('menu-container');
-            
+
             // Loop through all properties of the "eend" object
             for (const key in eend) {
                 if (eend.hasOwnProperty(key)) {
@@ -53,7 +53,7 @@ function init() {
 
             // Add click event listener to "duckData" element to toggle menu visibility
             const duckData = document.getElementById('duckData');
-            duckData.addEventListener('click', function() {
+            duckData.addEventListener('click', function () {
                 menuContainer.classList.toggle('active');
                 menuContainer.style.display = (menuContainer.style.display === 'none') ? 'block' : 'none';
             });
@@ -98,6 +98,12 @@ function handleMove(e) {
         yValue = e.touches[0].clientY - window.innerHeight / 2;
     }
 
+    // Limit movement to a maximum of 50 pixels in each direction
+    const maxXValue = 200;
+    const maxYValue = 200;
+    xValue = Math.max(-maxXValue, Math.min(maxXValue, xValue));
+    yValue = Math.max(-maxYValue, Math.min(maxYValue, yValue));
+
     console.log(xValue, yValue);
 
     parallex_elements.forEach((el) => {
@@ -105,9 +111,30 @@ function handleMove(e) {
         let speedy = el.dataset.speedy;
 
         el.style.transform = `translateX(calc(-50% + ${-xValue * speedx}px)) translateY(calc(-50% + ${yValue * speedy}px))`;
-
     });
 }
 
+// Select the target elements using querySelectorAll
+const elements = document.querySelectorAll('.timeline article');
 
+// Create a new Intersection Observer for each element
+const observeElements = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        // Find the target element from the entry
+        const targetElement = entry.target;
+
+        // Check if the target element is intersecting with the viewport
+        if (entry.isIntersecting) {
+            // If intersecting, add a CSS class to make it visible
+            targetElement.classList.add('visible');
+        }
+    });
+}, {
+    rootMargin: '-250px 0px' // Adjust the margin to trigger when element is 250px away from the viewport
+});
+
+// Start observing each target element
+elements.forEach(element => {
+    observeElements.observe(element);
+});
 
