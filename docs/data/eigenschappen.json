@@ -1,13 +1,17 @@
 {
     "eend": {
-        "naam": "value1",
-        "leeftijd": "value2",
-        "eendenNaam": "value3",
-        "karakter": "value3",
-        "woonVijver": "value3",
-        "favorieteBrood": "value3",
-        "kwikKwekKwak": "value3",
-        "favorieteDoelwit": "value3"
+      "naam": "Kevin Boere",
+      "leeftijd": 154,
+      "eendenNaam": "Eenderick the explorer",
+      "karakter": "Een avontuurlijke eend",
+      "woonVijver": "Kalenbergse Plas",
+      "favorieteBrood": "Witbrood met eendenpaté",
+      "kwikKwekKwak": "Kwik",
+      "favorieteDoelwit": {
+        "doelwit1": "Het hoofd van een arrogante tuinkabouter",
+        "doelwit2": "Een kikker met een grote mond",
+        "doelwit3": "Een hond die niet kan zwemmen"
+      }
     }
-}
-
+  }
+  
