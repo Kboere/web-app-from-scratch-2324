@@ -83,6 +83,31 @@ elements.forEach(element => {
 });
 
 // -----------------------------------------------------------------------
+// Functie om de secties langzaam te laten verschijnen wanneer ze in beeld komen
+// -----------------------------------------------------------------------
+
+const fadeIn = document.querySelectorAll('.hidden');
+
+const options = {
+  threshold: 0.2
+};
+
+fadeIn.forEach(fade => {
+  const observerFade = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  observerFade.observe(fade);
+});
+
+
+
+// -----------------------------------------------------------------------
 // Functie om random duck images op te halen en te tonen
 // -----------------------------------------------------------------------
 
