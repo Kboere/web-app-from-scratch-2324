@@ -16,7 +16,8 @@
         <nav>
             <img src="./img/logo.png" alt="logo">
             <ul>
-                <li id="duckData"><img src="./img/avatar.png" alt="picture of a avatar"></li> <!-- data is fetched from the api -->
+                <li id="duckData"><img src="./img/avatar.png" alt="picture of a avatar"></li>
+                <!-- data is fetched from the api -->
                 <li> <a href="#projecten">blog</a></li>
             </ul>
         </nav>
@@ -24,11 +25,15 @@
 
     <main>
         <section id="parallex" class="parallex full-w">
-            <img data-speedx="0.3" data-speedy="0.35" class="para-class bg-img" src="./img/bg.png" alt="background of parallex">
-            <img data-speedx="0.145" data-speedy="0.2" class="para-class palmboom" src="./img/palmboom.png" alt="imag of a palm tree">
-            <img data-speedx="0.6" data-speedy="0.45" class="para-class meeuw" src="./img/meeuw.png" alt="image of a bird">
+            <img data-speedx="0.3" data-speedy="0.35" class="para-class bg-img" src="./img/bg.png"
+                alt="background of parallex">
+            <img data-speedx="0.145" data-speedy="0.2" class="para-class palmboom" src="./img/palmboom.png"
+                alt="imag of a palm tree">
+            <img data-speedx="0.6" data-speedy="0.45" class="para-class meeuw" src="./img/meeuw.png"
+                alt="image of a bird">
             <img data-speedx="0.25" data-speedy="0.28" class=" bos" src="./img/bos.png" alt="image of a little bush">
-            <img data-speedx="0.25" data-speedy="0.28" class="para-class duck" src="./img/duck.png" alt="image of a duck">
+            <img data-speedx="0.25" data-speedy="0.28" class="para-class duck" src="./img/duck.png"
+                alt="image of a duck">
             <img data-speedx="0.175" data-speedy="0.125" class=" rots" src="./img/rots.png" alt="image of a rock">
             <hgroup data-speedx="0.4" data-speedy="0.35" class="para-class text">
                 <h2>Hi, ik ben</h2>
@@ -74,39 +79,39 @@
 
             <section id="projecten" class="projecten">
                 <article class="flip-box">
-                    <div class="flip-box-inner">
-                        <div class="flip-box-front">
+                    <section class="flip-box-inner">
+                        <figure class="flip-box-front">
                             <img src="image.jpg" alt="Afbeelding">
-                        </div>
-                        <div class="flip-box-back">
-                            <h2>Achterkant</h2>
-                            <p>Dit is de achterkant van de flip box met wat tekst.</p>
-                        </div>
-                    </div>
+                        </figure>
+                        <figcaption class="flip-box-back">
+                            <h4>Waarom deze film?</h4>
+                            <p>Iedereen kent de filmserie Harry Potter wel.</p>
+                        </figcaption>
+                    </section>
                 </article>
 
                 <article class="flip-box">
-                    <div class="flip-box-inner">
-                        <div class="flip-box-front">
+                    <section class="flip-box-inner">
+                        <figure class="flip-box-front">
                             <img src="image.jpg" alt="Afbeelding">
-                        </div>
-                        <div class="flip-box-back">
-                            <h2>Achterkant</h2>
-                            <p>Dit is de achterkant van de flip box met wat tekst.</p>
-                        </div>
-                    </div>
+                        </figure>
+                        <figcaption class="flip-box-back">
+                            <h4>Waarom deze film?</h4>
+                            <p>Iedereen kent de filmserie Harry Potter wel.</p>
+                        </figcaption>
+                    </section>
                 </article>
 
                 <article class="flip-box">
-                    <div class="flip-box-inner">
-                        <div class="flip-box-front">
+                    <section class="flip-box-inner">
+                        <figure class="flip-box-front">
                             <img src="image.jpg" alt="Afbeelding">
-                        </div>
-                        <div class="flip-box-back">
-                            <h2>Achterkant</h2>
-                            <p>Dit is de achterkant van de flip box met wat tekst.</p>
-                        </div>
-                    </div>
+                        </figure>
+                        <figcaption class="flip-box-back">
+                            <h4>Waarom deze film?</h4>
+                            <p>Iedereen kent de filmserie Harry Potter wel.</p>
+                        </figcaption>
+                    </section>
                 </article>
             </section>
 
@@ -115,72 +120,58 @@
             </button>
         </section>
 
-        <!-- <section class="slider boxed-w">
-            <section class="settings">
-                <h2>Slider</h2>
-                <p>Deze slider is gemaakt met javascript en css. De afbeeldingen worden dynamisch ingeladen vanuit een
-                    api.</p>
-
-                    <label for="numPhotos">Number of Ducks:</label>
-                <input type="number" id="numPhotos" min="4" max="15" value="4">
-                <button id="fetchDucks">Fetch Ducks</button>
-            </section>
-            
-            <section class="slider-container">
-                <div id="duckRow" class="duck-row"></div>
-            </section>
-            
-            <button id="prevButton">Previous</button>
-            <button id="nextButton">Next</button>
-        </section> -->
+        <section class="model boxed-w">
+            <hgroup>
+                <h3 class="text-accent">Interactie</h3>
+                <h2>Mij van dichtbij willen bekijken? interacteer met mij!</h2>
+            </hgroup>
+            <spline-viewer url="https://prod.spline.design/uCf7yh0HgHhCbohG/scene.splinecode"></spline-viewer>
+        </section>
 
         <section class="pre-footer boxed-w">
-            <section class="3d-model">
-                <img src="./img/3d-model.png" alt="3d model">
-            </section>
+            <h2>Contacteer mij</h2>
+            <p>Heb je een vraag of wil je gewoon even hallo zeggen? Neem dan contact met mij op via de onderstaande
+                knop.</p>
 
-            <section>
-                <h2>Contacteer mij</h2>
-                <p>Heb je een vraag of wil je gewoon even hallo zeggen? Neem dan contact met mij op via de onderstaande
-                    knop.</p>
-                <button>
-                    <a href="#">Contact</a>
-                </button>
-            </section>
+            <button>
+                <a href="#">Contact</a>
+            </button>
         </section>
     </main>
 
     <footer class="full-w">
-        <section class="footer-logo">
-            <img src="./img/logo.png" alt="logo">
-            <p>Over mij, Ik ben Kevin Boere, een front-end developer en grafisch vormgever. Ik hou van het ontwikkelen van
-                websites en webapplicaties. Ik ben altijd op zoek naar nieuwe uitdagingen en projecten.
-            </p>
-        </section>
-        <section class="footer-nav">
-            <h4>Pages</h4>
-            <ul>
-                <li>blog</li>
-                <li>menu</li>
-                <li>contact</li>
-            </ul>
-        </section>
+        <section class="boxed-w">
+            <section class="footer-logo">
+                <img src="./img/logo.png" alt="logo">
+                <p>Over mij, Ik ben Kevin Boere, een front-end developer en grafisch vormgever. Ik hou van het
+                    ontwikkelen
+                    van
+                    websites en webapplicaties. Ik ben altijd op zoek naar nieuwe uitdagingen en projecten.
+                </p>
+            </section>
+            <nav class="footer-nav">
+                <h4>Pages</h4>
+                <ul>
+                    <li>blog</li>
+                    <li>menu</li>
+                    <li>contact</li>
+                </ul>
+            </nav>
 
-        <section class="footer-socials">
-            <h4>Socials</h4>
-            <ul>
-                <li>facebook</li>
-                <li>instagram</li>
-                <li>linkedin</li>
-            </ul>
+            <nav class="footer-socials">
+                <h4>Socials</h4>
+                <ul>
+                    <li>facebook</li>
+                    <li>instagram</li>
+                    <li>linkedin</li>
+                </ul>
+            </nav>
         </section>
-
-
 
     </footer>
 
 
-
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.50/build/spline-viewer.js"></script>
     <script src="./js/index.js"></script>
 </body>
 
