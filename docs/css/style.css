@@ -570,6 +570,11 @@ section.projects {
     color: black;
     transform: rotateY(180deg);
     margin: 0;
+    padding: 10px;
+  }
+
+  .flip-box-back h3, .flip-box-back p{
+    color: #000;
   }
 
   section.model spline-viewer {
@@ -581,12 +586,13 @@ section.pre-footer {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    background-color: #f2f2f2;
+    background-color: rgb(255 255 255 / 58%);
     padding: 30px;
     border-radius: 5px;
     width: 60%;
     top: 5em;
     z-index: 1;
+    backdrop-filter: blur(5px);
 }
 
 footer {
@@ -610,12 +616,16 @@ footer section, footer nav {
 footer nav{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
 }
 
 footer nav ul {
     display: block;
+}
+
+footer nav ul li {
+    margin-left: -10px;
 }
 
 footer .boxed-w{

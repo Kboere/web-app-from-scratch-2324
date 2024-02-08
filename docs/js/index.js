@@ -1,15 +1,21 @@
-
-// -----------------------------------------------------------------------
-// Functie om de parallex effecten te verschuiven op mousemove met Intersection Observer
-// -----------------------------------------------------------------------
-
-const parallex_elements = document.querySelectorAll(".para-class");
-
+// Parallex elementen variabelen
+const parallaxElements = document.querySelectorAll(".para-class");
+const section = document.querySelector('#parallex');
 let xValue = 0;
 let yValue = 0;
 
-const section = document.querySelector('#parallex');
+// Timeline elementen variabelen
+const elements = document.querySelectorAll('.timeline article');
 
+// Flipbox elementen variabelen
+const duckImages = document.querySelectorAll('.flip-box-front img');
+
+
+// -----------------------------------------------------------------------
+// Functie om de parallax effecten te verschuiven op mousemove met Intersection Observer
+// -----------------------------------------------------------------------
+
+// maak een nieuwe Intersection Observer aan voor de parallax sectie voor mousemove en touchmove en doe dan de functie uitvoeren
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.intersectionRatio >= 0.80) {
@@ -24,6 +30,7 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(section);
 
+// Functie om de parallax effecten te verschuiven op mousemove of touchmove
 function handleMove(e) {
     let xValue, yValue;
     if (e.type === "mousemove") {
@@ -34,7 +41,7 @@ function handleMove(e) {
         yValue = e.touches[0].clientY - window.innerHeight / 2;
     }
 
-    // Limit movement to a maximum of 50 pixels in each direction
+    // limiteer de beweging van de muis voor de x en y as
     const maxXValue = 200;
     const maxYValue = 200;
     xValue = Math.max(-maxXValue, Math.min(maxXValue, xValue));
@@ -42,11 +49,12 @@ function handleMove(e) {
 
     console.log(xValue, yValue);
 
-    parallex_elements.forEach((el) => {
-        let speedx = el.dataset.speedx;
-        let speedy = el.dataset.speedy;
+    // Loop over alle parallax elementen en pas de transform aan
+    parallaxElements.forEach((el) => {
+        let speedX = el.dataset.speedx;
+        let speedY = el.dataset.speedy;
 
-        el.style.transform = `translateX(calc(-50% + ${-xValue * speedx}px)) translateY(calc(-50% + ${yValue * speedy}px))`;
+        el.style.transform = `translateX(calc(-50% + ${-xValue * speedX}px)) translateY(calc(-50% + ${yValue * speedY}px))`;
     });
 }
 
@@ -54,23 +62,19 @@ function handleMove(e) {
 // Functie om de timeline artikelen te tonen wanneer ze in beeld komen
 // -----------------------------------------------------------------------
 
-// Select the target elements using querySelectorAll
-const elements = document.querySelectorAll('.timeline article');
-
-// Create a new Intersection Observer for each element
+// Maak een nieuwe Intersection Observer aan voor de timeline artikelen en voer dan de functie uit
 const observeElements = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        // Find the target element from the entry
+        // vind het doelelement
         const targetElement = entry.target;
 
-        // Check if the target element is intersecting with the viewport
+        // bekijk of het element in beeld is
         if (entry.isIntersecting) {
-            // If intersecting, add a CSS class to make it visible
             targetElement.classList.add('visible');
         }
     });
 }, {
-    rootMargin: '-250px 0px' // Adjust the margin to trigger when element is 250px away from the viewport
+    rootMargin: '-250px 0px' // pas de rootMargin aan om de artikelen eerder of later te laten zien
 });
 
 // Start observing each target element
@@ -82,103 +86,99 @@ elements.forEach(element => {
 // Functie om random duck images op te halen en te tonen
 // -----------------------------------------------------------------------
 
-// const duckImages = document.querySelectorAll('.flip-box-front img');
+// Function to fetch random duck images
+async function fetchDuckImages() {
+    try {
+        const response = await fetch('https://api.unsplash.com/photos/random?query=duck&count=3&client_id=LNN0KHkEmgDzKRf5PSmkW5m6x514rAg6h-jTP-lfV9U');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching duck images:', error);
+    }
+}
 
-//     // Function to fetch random duck images
-//     async function fetchDuckImages() {
-//         try {
-//             const response = await fetch('https://api.unsplash.com/photos/random?query=duck&count=3&client_id=LNN0KHkEmgDzKRf5PSmkW5m6x514rAg6h-jTP-lfV9U');
-//             const data = await response.json();
-//             return data;
-//         } catch (error) {
-//             console.error('Error fetching duck images:', error);
-//         }
-//     }
+// Function to update duck images
+async function updateDuckImages() {
+    try {
+        const imagesData = await fetchDuckImages();
+        imagesData.forEach((imageData, index) => {
+            duckImages[index].src = imageData.urls.regular;
+            duckImages[index].alt = imageData.alt_description || 'Duck Image';
+        });
+    } catch (error) {
+        console.error('Error updating duck images:', error);
+    }
+}
 
-//     // Function to update duck images
-//     async function updateDuckImages() {
-//         try {
-//             const imagesData = await fetchDuckImages();
-//             imagesData.forEach((imageData, index) => {
-//                 duckImages[index].src = imageData.urls.regular;
-//                 duckImages[index].alt = imageData.alt_description || 'Duck Image';
-//             });
-//         } catch (error) {
-//             console.error('Error updating duck images:', error);
-//         }
-//     }
-
-//     // Initial load of duck images
-//     updateDuckImages();
+// Initial load of duck images
+updateDuckImages();
 
 
 // -----------------------------------------------------------------------
-// Function to fetch "eigenschappen.json" and display the data in a list
+// Functie om "eigenschappen.json" op te halen en de gegevens in een lijst weer te geven
 // -----------------------------------------------------------------------
 
 // Functie om JSON in te laden met fetch
-function loadJSON() {
-    return fetch('https://kboere.github.io/web-app-from-scratch-2324/data/eigenschappen.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+async function loadJSON() {
+    try {
+        const response = await fetch('https://kboere.github.io/web-app-from-scratch-2324/data/eigenschappen.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
 }
 
 // Voorbeeld van hoe je de JSON kunt gebruiken om een lijst te maken
-function init() {
-    loadJSON()
-        .then(data => {
-            const outputList = document.getElementById('duckData'); // Get the output list element
-            const eend = data.eend; // Access the "eend" object
+async function init() {
+    try {
+        const data = await loadJSON();
+        const outputList = document.getElementById('duckData'); // Get the output list element
+        const duck = data.eend; // Access the "eend" object
 
-            // Define a mapping object for custom property names
-            const propertyMapping = {
-                "naam": "Naam",
-                "leeftijd": "Leeftijd in eendenjaren",
-                "eendenNaam": "Eenden naam",
-                "karakter": "Karakter van eend",
-                "woonVijver": "Mijn woonvijver",
-                "favorieteBrood": "Favoriete brood",
-                "kwikKwekKwak": "Ik ben een kwik, kwek of kwakker",
-                "favorieteDoelwit": "Mijn favoriete poepdoelwit",
-            };
+        // Define a mapping object for custom property names
+        const propertyMapping = {
+            "naam": "Naam",
+            "leeftijd": "Leeftijd in eendenjaren",
+            "eendenNaam": "Eenden naam",
+            "karakter": "Karakter van eend",
+            "woonVijver": "Mijn woonvijver",
+            "favorieteBrood": "Favoriete brood",
+            "kwikKwekKwak": "Ik ben een kwik, kwek of kwakker",
+            "favorieteDoelwit": "Mijn favoriete poepdoelwit",
+        };
 
-            // Create a menu container
-            const menuContainer = document.createElement('ul');
-            menuContainer.classList.add('menu-container');
+        // Create a menu container
+        const menuContainer = document.createElement('ul');
+        menuContainer.classList.add('menu-container');
 
-            // Loop through all properties of the "eend" object
-            for (const key in eend) {
-                if (eend.hasOwnProperty(key)) {
-                    const customPropertyName = propertyMapping[key] || key; // Use custom name if exists, otherwise use original property name
-                    const listItem = document.createElement('li');
-                    listItem.innerHTML = `<span class="property">${customPropertyName}:</span> ${eend[key]}`; // Add custom property name and value to the list item
-                    menuContainer.appendChild(listItem);
-                }
+        // Loop through all properties of the "eend" object
+        for (const key in duck) {
+            if (duck.hasOwnProperty(key)) {
+                const customPropertyName = propertyMapping[key] || key; // Use custom name if exists, otherwise use original property name
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<span class="property">${customPropertyName}:</span> ${duck[key]}`; // Add custom property name and value to the list item
+                menuContainer.appendChild(listItem);
             }
+        }
 
-            // Hide the menu initially
-            menuContainer.style.display = 'none';
+        // Hide the menu initially
+        menuContainer.style.display = 'none';
 
-            // Append the menu container to the output list
-            outputList.appendChild(menuContainer);
+        // Append the menu container to the output list
+        outputList.appendChild(menuContainer);
 
-            // Add click event listener to "duckData" element to toggle menu visibility
-            const duckData = document.getElementById('duckData');
-            duckData.addEventListener('click', function () {
-                menuContainer.classList.toggle('active');
-                menuContainer.style.display = (menuContainer.style.display === 'none') ? 'block' : 'none';
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
+        // Add click event listener to "duckData" element to toggle menu visibility
+        const duckData = document.getElementById('duckData');
+        duckData.addEventListener('click', function () {
+            menuContainer.classList.toggle('active');
+            menuContainer.style.display = (menuContainer.style.display === 'none') ? 'block' : 'none';
         });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
 }
 
 // Roep de init functie aan zodra de pagina geladen is
