@@ -208,3 +208,4 @@ async function init() {
 
 // Roep de init functie aan zodra de pagina geladen is
 window.onload = init;
+

@@ -115,8 +115,8 @@ a {
     transition: color 0.3s;
 }
 
-a:hover {
-    color: var(--text-color-light);
+a:focus {
+    background-color: var(--text-color-accent) ;
 }
 
 .full-w {
@@ -392,10 +392,6 @@ section.model {
     flex-wrap: wrap;
 }
 
-section.model{
-    margin-bottom: calc(150px - 5em);
-}
-
 section.career hgroup,
 section.projects hgroup,
 section.model hgroup {
@@ -532,6 +528,7 @@ section.projects {
     background-color: transparent;
     width: calc(100% / 3 - 20px);
     height: 250px;
+    cursor: pointer;
 }
 
 .flip-box-inner {
@@ -609,7 +606,7 @@ section.pre-footer {
     padding: 30px;
     border-radius: 5px;
     width: 60%;
-    top: 5em;
+    top: 0;
     z-index: 1;
     backdrop-filter: blur(5px);
 }
@@ -652,6 +649,106 @@ footer .boxed-w {
     display: flex;
     justify-content: space-between;
 }
+
+section.river {
+    position: relative;
+    width: 100%;
+    top: 0px;
+    height: 150px;
+    z-index: 2;
+}
+
+section.river img {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+section.river img:nth-child(2) {
+    width: 6vw;
+    height: auto;
+    animation: floating 14s linear infinite;
+}
+
+section.river img:nth-child(3) {
+    bottom: -2vw;
+}
+
+@keyframes floating {
+    0% {
+        left: 0;
+        transform: translateY(1vw);
+    }
+    3% {
+        transform: translateY(-5vw);
+    }
+    10% {
+        transform: translateY(1vw);
+    }
+    15% {
+        transform: translateY(-4vw);
+    }
+    20% {
+        transform: translateY(1vw);
+    }
+    33% {
+        transform: translateY(-5vw);
+    }
+    36% {
+        transform: translateY(1vw);
+    }
+    39% {
+        transform: translateY(-6vw);
+    }
+    42% {
+        transform: translateY(-6vw);
+    }
+    46% {
+        transform: translateY(1vw);
+    }
+    49% {
+        transform: translateY(1vw);
+    }
+    50% {
+        left: calc(100% - 6vw);
+        transform: translateY(-4vw);
+    }
+    51% {
+        transform: translateY(2vw);
+    }
+    54% {
+        transform: translateY(1vw);
+    }
+    58% {
+        transform: translateY(-5vw);
+    }
+    61% {
+        transform: translateY(-5vw);
+    }
+    64% {
+        transform: translateY(1vw);
+    }
+    67% {
+        transform: translateY(-5vw);
+    }
+    80% {
+        transform: translateY(1vw);
+    }
+    85% {
+        transform: translateY(-4vw);
+    }
+    90% {
+        transform: translateY(2vw);
+    }
+    97% {
+        transform: translateY(-5vw);
+    }
+    100% {
+        left: 0;
+        transform: translateY(1vw);
+    }
+  }
+
 
 @media only screen and (max-width: 1200px) {
     .career .timeline article {
