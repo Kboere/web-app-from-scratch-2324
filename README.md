@@ -3,6 +3,11 @@ In dit vak gaan we een web applicatie bouwen en leren hoe deze werken door zo mi
 Het eindresultaat is een modulaire, single page web app (SPA), beoordeeld op jouw niveau en eigen leerdoelen.
 De bedoeling is om een web app te bouwen die data ophaalt van een externe API, deze manipuleert om te tonen in de UI van de App, hoe abstract dan ook. Je gaat bekende patterns leren toe passen bij het bouwen en testen van de applicatie voor een eigen "WebSite" en een gezamenlijke "Team App". Nog nooit heb je zo snel kunnen prototypen als nadat je hebt leren werken met de browser en haar talen. Daarnaast zal je tijdloze kennis opdoen over het de aard en het gebruik van data, datastructuren, algoritmes, libraries, frameworks en de werking van het web.
 
+## Documentatie
+documentatie van dit project kun je vinden in de wiki tab van deze repositorie. hierin vindt je:
+- Documentatie procesverslag
+- Documentatie code
+
 ## ⚡️ Opdracht
 1. Bouw je eigen SPA/WebSite met externe data van een API, minimaal 1 micro interactie.
 2. Een TeamApp met een verzameling van alle losse websites van je teamleden
