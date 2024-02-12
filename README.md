@@ -7,6 +7,7 @@ De bedoeling is om een web app te bouwen die data ophaalt van een externe API, d
 documentatie van dit project kun je vinden in de wiki tab van deze repositorie. hierin vindt je:
 - Documentatie procesverslag
 - Documentatie code
+- Project evalutie
 
 ## ⚡️ Opdracht
 1. Bouw je eigen SPA/WebSite met externe data van een API, minimaal 1 micro interactie.
