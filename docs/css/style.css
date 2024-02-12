@@ -394,26 +394,26 @@ section.model {
     flex-wrap: wrap;
 }
 
-section.career hgroup,
-section.projects hgroup,
-section.model hgroup {
+section.career .hgroup,
+section.projects .hgroup,
+section.model .hgroup {
     width: 100%;
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.career hgroup h3,
-.projects hgroup h3,
-section.model hgroup h3 {
+.career .hgroup h3,
+.projects .hgroup h3,
+section.model .hgroup h3 {
     font-weight: 100;
     text-transform: uppercase;
     font-size: 1.3em;
     line-height: 1.3em;
 }
 
-.career hgroup h2,
-.projects hgroup h2,
-section.model hgroup h2 {
+.career .hgroup h2,
+.projects .hgroup h2,
+section.model .hgroup h2 {
     font-weight: 800;
     text-transform: uppercase;
     font-size: 3em;
@@ -801,7 +801,7 @@ section.river:after {
         line-height: 4rem;
     }
 
-    .career hgroup h2, .projects hgroup h2, section.model hgroup h2 {
+    .career .hgroup h2, .projects .hgroup h2, section.model .hgroup h2 {
         font-size: 2em;
         width: 80%;
 

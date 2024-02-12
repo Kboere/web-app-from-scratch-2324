@@ -89,20 +89,20 @@ elements.forEach(element => {
 const fadeIn = document.querySelectorAll('.hidden');
 
 const options = {
-  threshold: 0.2
+    threshold: 0.2
 };
 
 fadeIn.forEach(fade => {
-  const observerFade = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, options);
+    const observerFade = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
 
-  observerFade.observe(fade);
+    observerFade.observe(fade);
 });
 
 
@@ -182,11 +182,32 @@ async function init() {
         menuContainer.classList.add('menu-container');
 
         // Loop through all properties of the "eend" object
+        // Loop through all properties of the "eend" object
+        // Loop through all properties of the "eend" object
         for (const key in duck) {
             if (duck.hasOwnProperty(key)) {
                 const customPropertyName = propertyMapping[key] || key; // Use custom name if exists, otherwise use original property name
+                let propertyValue = duck[key];
+
+                // If the property is "favorieteDoelwit", handle it separately
+                if (key === 'favorieteDoelwit') {
+                    propertyValue = ''; // Reset propertyValue to an empty string
+                    const favoriteTargets = duck[key]; // Get the object containing favorite targets
+
+                    // Sort the favorite targets by their values (ascending order)
+                    const sortedTargets = Object.entries(favoriteTargets).sort((a, b) => a[1].localeCompare(b[1]));
+
+                    // Take the top 3 favorite targets
+                    const top3Targets = sortedTargets.slice(0, 3);
+
+                    // Loop through each favorite target
+                    top3Targets.forEach((target, index) => {
+                        propertyValue += `${index + 1}. ${target[1]}<br>`; // Concatenate each target with its rank
+                    });
+                }
+
                 const listItem = document.createElement('li');
-                listItem.innerHTML = `<span class="property">${customPropertyName}:</span> ${duck[key]}`; // Add custom property name and value to the list item
+                listItem.innerHTML = `<span class="property">${customPropertyName}:</span> ${propertyValue}`; // Add custom property name and value to the list item
                 menuContainer.appendChild(listItem);
             }
         }
