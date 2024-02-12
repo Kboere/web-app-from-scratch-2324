@@ -339,12 +339,22 @@ section.parallex {
     transform-origin: center;
 }
 
-.parallex .duck {
+/* .parallex .duck {
     position: absolute;
     top: calc(100% - 200px);
     right: 90px;
     width: 100px;
     z-index: 6;
+} */
+
+.parallex .duck {
+    position: relative;
+    top: calc(100% - 200px);
+    width: 100px;
+    z-index: 6;
+    left: 90%;
+    cursor: pointer;
+    pointer-events: visible;
 }
 
 .parallex .rots {

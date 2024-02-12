@@ -163,6 +163,10 @@ async function init() {
         const outputList = document.getElementById('duckData'); // Get the output list element
         const duck = data.eend; // Access the "eend" object
 
+        const duckData = document.getElementById('duckData');
+        const clickableDuck = document.querySelector(".duck");
+        const menuContainer = document.createElement('ul');
+
         // Define a mapping object for custom property names
         const propertyMapping = {
             "naam": "Naam",
@@ -175,8 +179,6 @@ async function init() {
             "favorieteDoelwit": "Mijn favoriete poepdoelwit",
         };
 
-        // Create a menu container
-        const menuContainer = document.createElement('ul');
         menuContainer.classList.add('menu-container');
 
         // Loop through all properties of the "eend" object
@@ -196,8 +198,12 @@ async function init() {
         outputList.appendChild(menuContainer);
 
         // Add click event listener to "duckData" element to toggle menu visibility
-        const duckData = document.getElementById('duckData');
         duckData.addEventListener('click', function () {
+            menuContainer.classList.toggle('active');
+            menuContainer.style.display = (menuContainer.style.display === 'none') ? 'block' : 'none';
+        });
+
+        clickableDuck.addEventListener('click', function () {
             menuContainer.classList.toggle('active');
             menuContainer.style.display = (menuContainer.style.display === 'none') ? 'block' : 'none';
         });
