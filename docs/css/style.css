@@ -339,14 +339,6 @@ section.parallex {
     transform-origin: center;
 }
 
-/* .parallex .duck {
-    position: absolute;
-    top: calc(100% - 200px);
-    right: 90px;
-    width: 100px;
-    z-index: 6;
-} */
-
 .parallex .duck {
     position: relative;
     top: calc(100% - 200px);
@@ -678,7 +670,7 @@ section.river img {
 section.river img:nth-child(2) {
     width: 6vw;
     height: auto;
-    animation: floating 14s linear infinite;
+    animation: floating 20s linear infinite;
 }
 
 section.river img:nth-child(1) {
