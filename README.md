@@ -8,6 +8,7 @@ documentatie van dit project kun je vinden in de wiki tab van deze repositorie. 
 - Documentatie procesverslag
 - Documentatie code
 - Project evalutie
+- gebruikte bronnen
 
 ## ⚡️ Opdracht
 1. Bouw je eigen SPA/WebSite met externe data van een API, minimaal 1 micro interactie.
