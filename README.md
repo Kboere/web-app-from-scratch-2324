@@ -42,5 +42,3 @@ Dit project heeft een [MIT](https://github.com/Kboere/web-app-from-scratch-2324/
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
-
-<!-- How about a license here? 📜 (or is it a licence?) 🤷 -->

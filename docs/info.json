@@ -1,0 +1,17 @@
+{
+    "firstName": "Kevin",
+    "lastName": "Boere",
+    "avatar_url": "https://kboere.github.io/web-app-from-scratch-2324/img/avatar.png",
+    "age": 22,
+    "city": "Geldermalsen",
+    "hobbies": [
+        "Soccer",
+        "Tennis",
+        "Front-end developing"
+    ],
+    "truthsAndLies": [
+        "It is physically impossible for pigs to look up into the sky",
+        "Coca-Cola was originally green in color",
+        "The shortest war in history was between Zanzibar and England in 1896, lasting only 38 minutes."
+    ]
+}

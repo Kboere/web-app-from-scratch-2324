@@ -151,12 +151,17 @@ a:focus {
 .hidden {
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    animation: hiddenSection linear forwards;
+    animation-timeline: view();
+    animation-range: 100px 200px;
   }
-  
-  .visible {
-    opacity: 1;
-    transform: translateY(0);
+
+  @keyframes hiddenSection { 
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
 
@@ -167,7 +172,7 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'roboto', sans-serif;
     line-height: 1.6;
     background-color: var(--body-bg-color);
     color: var(--text-color);
@@ -454,13 +459,18 @@ section.model .hgroup h2 {
     left: 80%;
     opacity: 0;
     margin-left: 60px;
-    transition: all 1s ease-in-out;
-    /* Apply smooth transition */
+
+
+    animation: timelineItems linear forwards;
+    animation-timeline: view();
+    animation-range: 100px 400px;
 }
 
-.career .timeline article.visible:nth-child(odd) {
-    left: 50%;
-    opacity: 1;
+@keyframes timelineItems {
+    to{
+        opacity: 1;
+        left: 50%;
+    }
 }
 
 .career .timeline article:nth-child(even) {
@@ -469,11 +479,9 @@ section.model .hgroup h2 {
     transform: translateX(calc(-100% - 110px));
     margin-left: 60px;
     transition: all 1s ease-in-out;
-}
-
-.career .timeline article.visible:nth-child(even) {
-    left: 50%;
-    opacity: 1;
+    animation: timelineItems linear forwards;
+    animation-timeline: view();
+    animation-range: 100px 400px;
 }
 
 .career .timeline article:after {
@@ -820,10 +828,12 @@ section.river:after {
         transform: none;
     }
 
-    .career .timeline article.visible:nth-child(odd),
-    .career .timeline article.visible:nth-child(even) {
-        left: 0;
-        padding-right: 30px;
+    @keyframes timelineItems {
+        to{
+            opacity: 1;
+            left: 0;
+            padding-right: 30px;
+        }
     }
 
     .career .timeline article:nth-child(even):after {

@@ -59,55 +59,6 @@ function handleMove(e) {
 }
 
 // -----------------------------------------------------------------------
-// Functie om de timeline artikelen te tonen wanneer ze in beeld komen
-// -----------------------------------------------------------------------
-
-// Maak een nieuwe Intersection Observer aan voor de timeline artikelen en voer dan de functie uit
-const observeElements = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        // vind het doelelement
-        const targetElement = entry.target;
-
-        // bekijk of het element in beeld is
-        if (entry.isIntersecting) {
-            targetElement.classList.add('visible');
-        }
-    });
-}, {
-    rootMargin: '-250px 0px' // pas de rootMargin aan om de artikelen eerder of later te laten zien
-});
-
-// Start observing each target element
-elements.forEach(element => {
-    observeElements.observe(element);
-});
-
-// -----------------------------------------------------------------------
-// Functie om de secties langzaam te laten verschijnen wanneer ze in beeld komen
-// -----------------------------------------------------------------------
-
-const fadeIn = document.querySelectorAll('.hidden');
-
-const options = {
-    threshold: 0.2
-};
-
-fadeIn.forEach(fade => {
-    const observerFade = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-
-    observerFade.observe(fade);
-});
-
-
-
-// -----------------------------------------------------------------------
 // Functie om random duck images op te halen en te tonen
 // -----------------------------------------------------------------------
 
@@ -123,6 +74,7 @@ async function fetchDuckImages() {
 }
 
 // Function to update duck images
+// store random duck images in a variable
 async function updateDuckImages() {
     try {
         const imagesData = await fetchDuckImages();
@@ -157,7 +109,7 @@ async function loadJSON() {
 }
 
 // Voorbeeld van hoe je de JSON kunt gebruiken om een lijst te maken
-async function init() {
+async function showDataList() {
     try {
         const data = await loadJSON();
         const outputList = document.getElementById('duckData'); // Get the output list element
@@ -234,5 +186,5 @@ async function init() {
 }
 
 // Roep de init functie aan zodra de pagina geladen is
-window.onload = init;
+showDataList();
 
