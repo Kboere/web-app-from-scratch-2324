@@ -13,37 +13,24 @@
 :root {
     /* Font Sizes */
     --h1-font-size: 2.5rem;
-    /* H1 font size */
     --h2-font-size: 2rem;
-    /* H2 font size */
     --h3-font-size: 1.75rem;
-    /* H3 font size */
     --h4-font-size: 1.5rem;
-    /* H4 font size */
     --h5-font-size: 1.25rem;
-    /* H5 font size */
     --h6-font-size: 1rem;
-    /* H6 font size */
     --p-font-size: 1rem;
-    /* Paragraph font size */
 
     /* Background Colors */
     --body-bg-color: #00280a;
-    /* Body background color */
 
     /* Text Colors */
     --text-color: #fff;
-    /* Default text color */
     --text-color-accent: #FFD743;
-    /* Text color for links and other accents */
     --text-color-light: #3D9051;
-    /* Lighter shade of text color */
 
     /* Border Radius */
     --border-radius: 0.25rem;
-    /* Border radius for elements */
     --border-radius-lg: 0.5rem;
-    /* Larger border radius for elements */
 }
 
 /* Header styles */
