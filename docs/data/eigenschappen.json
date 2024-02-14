@@ -7,11 +7,13 @@
       "woonVijver": "Kalenbergse Plas",
       "favorieteBrood": "Witbrood met eendenpaté",
       "kwikKwekKwak": "Kwik",
-      "favorieteDoelwit": {
+      "favorieteDoelwit": [
+        {
         "doelwit1": "Het hoofd van een arrogante tuinkabouter",
         "doelwit2": "Een kikker met een grote mond",
         "doelwit3": "Een hond die niet kan zwemmen"
       }
+    ]
     }
   }
   
