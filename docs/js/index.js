@@ -62,6 +62,24 @@ function handleMove(e) {
 // Functie om random duck images op te halen en te tonen
 // -----------------------------------------------------------------------
 
+// Function to show loading state
+function showLoadingState() {
+    // Show skeleton loading images
+    const loadingStateImages = document.querySelectorAll('.loading-state');
+    loadingStateImages.forEach(image => {
+        image.style.display = 'block'; // Hide loading state image
+    });
+}
+
+// Function to hide loading state
+function hideLoadingState() {
+    // Hide skeleton loading images
+    const loadingStateImages = document.querySelectorAll('.loading-state');
+    loadingStateImages.forEach(image => {
+        image.style.display = 'none'; // Hide loading state image
+    });
+}
+
 // Function to fetch random duck images
 async function fetchDuckImages() {
     try {
@@ -77,13 +95,30 @@ async function fetchDuckImages() {
 // store random duck images in a variable
 async function updateDuckImages() {
     try {
+        // Show loading state
+        showLoadingState();
+
         const imagesData = await fetchDuckImages();
+        const duckImages = document.querySelectorAll('.duck-image');
+
         imagesData.forEach((imageData, index) => {
             duckImages[index].src = imageData.urls.regular;
             duckImages[index].alt = imageData.alt_description || 'Duck Image';
+            duckImages[index].style.display = 'inline'; // Display duck image
         });
+
+        // Hide loading state after images are loaded
+        hideLoadingState();
     } catch (error) {
         console.error('Error updating duck images:', error);
+        // Show loading state in case of error
+        showLoadingState();
+        
+        // Hide duck images in case of error
+        const duckImages = document.querySelectorAll('.duck-image');
+        duckImages.forEach(image => {
+            image.style.display = 'none';
+        });
     }
 }
 
