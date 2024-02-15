@@ -36,7 +36,7 @@ function handleMove(e) {
     if (e.type === "mousemove") {
         xValue = e.clientX - window.innerWidth / 2;
         yValue = e.clientY - window.innerHeight / 2;
-    } else if (e.type === "touchmove") {
+    } else if (e.type === "touchmove") { 
         xValue = e.touches[0].clientX - window.innerWidth / 2;
         yValue = e.touches[0].clientY - window.innerHeight / 2;
     }
@@ -44,16 +44,16 @@ function handleMove(e) {
     // limiteer de beweging van de muis voor de x en y as
     const maxXValue = 200;
     const maxYValue = 200;
+    // zet de x en y waarde in de range van -200 tot 200
     xValue = Math.max(-maxXValue, Math.min(maxXValue, xValue));
     yValue = Math.max(-maxYValue, Math.min(maxYValue, yValue));
-
-    console.log(xValue, yValue);
 
     // Loop over alle parallax elementen en pas de transform aan
     parallaxElements.forEach((el) => {
         let speedX = el.dataset.speedx;
         let speedY = el.dataset.speedy;
 
+        // pas de transform aan met de x en y waarde en de snelheid
         el.style.transform = `translateX(calc(-50% + ${-xValue * speedX}px)) translateY(calc(-50% + ${yValue * speedY}px))`;
     });
 }
@@ -84,7 +84,7 @@ function hideLoadingState() {
 async function fetchDuckImages() {
     try {
         const response = await fetch('https://api.unsplash.com/photos/random?query=duck&count=3&client_id=LNN0KHkEmgDzKRf5PSmkW5m6x514rAg6h-jTP-lfV9U');
-        const data = await response.json();
+        const data = await response.json(); 
         return data;
     } catch (error) {
         console.error('Error fetching duck images:', error);
@@ -99,8 +99,10 @@ async function updateDuckImages() {
         showLoadingState();
 
         const imagesData = await fetchDuckImages();
+        // Get all duck images
         const duckImages = document.querySelectorAll('.duck-image');
 
+        // Loop over all duck images and set the src and alt attributes
         imagesData.forEach((imageData, index) => {
             duckImages[index].src = imageData.urls.regular;
             duckImages[index].alt = imageData.alt_description || 'Duck Image';
@@ -113,7 +115,7 @@ async function updateDuckImages() {
         console.error('Error updating duck images:', error);
         // Show loading state in case of error
         showLoadingState();
-        
+
         // Hide duck images in case of error
         const duckImages = document.querySelectorAll('.duck-image');
         duckImages.forEach(image => {
@@ -134,7 +136,7 @@ updateDuckImages();
 async function loadJSON() {
     try {
         const response = await fetch('https://kboere.github.io/web-app-from-scratch-2324/data/eigenschappen.json');
-        if (!response.ok) {
+        if (!response.ok) { // If the response is not ok
             throw new Error('Network response was not ok');
         }
         return await response.json();
@@ -169,9 +171,8 @@ async function showDataList() {
         menuContainer.classList.add('menu-container');
 
         // Loop through all properties of the "eend" object
-        // Loop through all properties of the "eend" object
-        // Loop through all properties of the "eend" object
         for (const key in duck) {
+            // Check if the property is a direct property of the object
             if (duck.hasOwnProperty(key)) {
                 const customPropertyName = propertyMapping[key] || key; // Use custom name if exists, otherwise use original property name
                 let propertyValue = duck[key];
@@ -181,10 +182,10 @@ async function showDataList() {
                     propertyValue = ''; // Reset propertyValue to an empty string
                     const favoriteTargets = duck[key]; // Get the object containing favorite targets
 
-                    // Sort the favorite targets by their values (ascending order)
+                    // Convert the object to an array of key-value pairs and sort it by the value
                     const sortedTargets = Object.entries(favoriteTargets).sort((a, b) => a[1].localeCompare(b[1]));
 
-                    // Take the top 3 favorite targets
+                    // Slice the array to get the top 3 targets
                     const top3Targets = sortedTargets.slice(0, 3);
 
                     // Loop through each favorite target
@@ -194,7 +195,8 @@ async function showDataList() {
                 }
 
                 const listItem = document.createElement('li');
-                listItem.innerHTML = `<span class="property">${customPropertyName}:</span> ${propertyValue}`; // Add custom property name and value to the list item
+                // Add custom property name and value to the list item
+                listItem.innerHTML = `<span class="property">${customPropertyName}:</span> ${propertyValue}`;
                 menuContainer.appendChild(listItem);
             }
         }
